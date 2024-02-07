@@ -102,11 +102,12 @@ def evaluate_homo(loader, inds, model, data, device, args):
     ground_truths = []
     for batch in tqdm.tqdm(loader, disable=not args.tqdm):
         #select the seed edges from which the batch was created
+        from IPython import embed
+        # embed()
         inds = inds.detach().cpu()
         batch_edge_inds = inds[batch.input_id.detach().cpu()]
         batch_edge_ids = loader.data.edge_attr.detach().cpu()[batch_edge_inds, 0]
         mask = torch.isin(batch.edge_attr[:, 0].detach().cpu(), batch_edge_ids)
-
         #add the seed edges that have not been sampled to the batch
         missing = ~torch.isin(batch_edge_ids, batch.edge_attr[:, 0].detach().cpu())
 

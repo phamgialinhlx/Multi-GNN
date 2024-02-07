@@ -1,7 +1,7 @@
 {
-    "paths": {
-      "aml_data": "/mnt/work/Code/credit_card_fd/Multi-GNN/data", 
-      "model_to_load": "/mnt/work/Code/credit_card_fd/Multi-GNN/checkpoint",
-      "model_to_save": "/mnt/work/Code/credit_card_fd/Multi-GNN/checkpoint"
-    }
+  "paths": {
+    "aml_data": "./data", 
+    "model_to_load": "./checkpoint",
+    "model_to_save": "./checkpoint"
   }
+}

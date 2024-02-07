@@ -160,7 +160,8 @@ def get_data(args, data_config):
     else:
         te_edge_index,  te_edge_attr,  te_y,  te_edge_times  = edge_index, edge_attr, y, timestamps
 
-    te_x = torch.ones(te_edge_index.max()).reshape(-1,1)
+    x = torch.ones(te_edge_index.max() + 1).reshape(-1, 1)
+    tr_x, val_x, te_x = x, x, x
     tr_data = GraphData (x=tr_x,  y=tr_y,  edge_index=tr_edge_index,  edge_attr=tr_edge_attr,  timestamps=tr_edge_times )
     val_data = GraphData(x=val_x, y=val_y, edge_index=val_edge_index, edge_attr=val_edge_attr, timestamps=val_edge_times)
     te_data = GraphData (x=te_x,  y=te_y,  edge_index=te_edge_index,  edge_attr=te_edge_attr,  timestamps=te_edge_times )

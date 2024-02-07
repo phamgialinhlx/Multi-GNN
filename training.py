@@ -48,8 +48,8 @@ def train_homo(tr_loader, val_loader, te_loader, tr_inds, val_inds, te_inds, mod
         logging.info(f'Train F1: {f1:.4f}')
 
         #evaluate
-        val_f1 = evaluate_homo(val_loader, val_inds, model, val_data, device, args)
-        te_f1 = evaluate_homo(te_loader, te_inds, model, te_data, device, args)
+        val_f1, ba, cohens_kappa, recall, precision = evaluate_homo(val_loader, val_inds, model, val_data, device, args)
+        te_f1, ba, cohens_kappa, recall, precision = evaluate_homo(te_loader, te_inds, model, te_data, device, args)
 
         wandb.log({"f1/validation": val_f1}, step=epoch)
         wandb.log({"f1/test": te_f1}, step=epoch)
